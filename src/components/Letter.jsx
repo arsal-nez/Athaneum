@@ -2,12 +2,10 @@ import React, { useState, useRef } from 'react';
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
 
-export default function Letter() {
-  const [name, setName] = useState('');
-  const [roomNumber, setRoomNumber] = useState('');
+export default function Letter({name, roomNumber}) {
   const letterRef = useRef(null);
 
-  const downloadLetter = async () => {
+  const downloadLetter = async ({name, room}) => {
     if (letterRef.current) {
       const canvas = await html2canvas(letterRef.current, {
         scale: 2,
@@ -121,23 +119,10 @@ export default function Letter() {
             <p>Enchanted Quill Office, NIT Agartala</p>
           </div>
           <div style={styles.letterBody}>
-            <p>Recipient:</p>
-            <input 
-              type="text" 
-              value={name} 
-              onChange={(e) => setName(e.target.value)} 
-              placeholder="[Please insert your name here, sunshine]"
-              style={styles.input}
-            />
-            <p>Room number:</p>
-            <input 
-              type="text" 
-              value={roomNumber} 
-              onChange={(e) => setRoomNumber(e.target.value)} 
-              placeholder="Room 221B ( Or Whatever Your Room Number Is )"
-              style={styles.input}
-            />
-            <p>Sasta Desi Hogwarts (a.k.a NITA)</p>
+          <div style={{display: 'flex', 'justifyContent': 'space-between'}}>
+                <span>Sasta Desi Hogwarts (a.k.a NITA)</span>
+               <span>Room number: {roomNumber}</span>
+         </div>
             <h2 style={styles.letterBodyH2}>Subject: 🧙‍♂️ Your Invitation Letter to the League of Literary Legends (No, This Isn't a Drill) 🎉</h2>
             <p>Dear {name || '[ YOU ]'},</p>
             <p>We are pleased to inform you that you have been invited to explore the wizarding world of our very own NITA Literary Club, the most magical place on campus! 🪄 Whether you stumbled upon this letter after running into a wall or found it delivered by an owl with an attitude, congratulations! Your literary journey begins now.</p>
