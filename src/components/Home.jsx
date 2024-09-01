@@ -7,7 +7,7 @@ export default function Component() {
     <div className="page-container">
       <div className="starry-background" />
       <div className="content-container">
-        <h1 className="title">Welcome to Athenaeum</h1>
+        <h1 className="title">Welcome to Atheneum</h1>
         <p className="quote">
           "Words are, in my not-so-humble opinion, our most inexhaustible source of magic." - Albus Dumbledore
         </p>
