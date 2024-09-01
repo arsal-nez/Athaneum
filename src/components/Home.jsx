@@ -2,18 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { BookOpen, Wand2, Sparkles } from 'lucide-react';
 
 export default function Component() {
-  const [doorOpen, setDoorOpen] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setDoorOpen(true), 500);
-    return () => clearTimeout(timer);
-  }, []);
 
   return (
     <div className="page-container">
       <div className="starry-background" />
-      <div className={`door left ${doorOpen ? 'open' : ''}`} />
-      <div className={`door right ${doorOpen ? 'open' : ''}`} />
       <div className="content-container">
         <h1 className="title">Welcome to Athenaeum</h1>
         <p className="quote">
@@ -80,29 +72,6 @@ export default function Component() {
           background: rgba(241, 228, 196, 0.9);
           border-radius: 15px;
           box-shadow: 0 0 30px rgba(255, 215, 0, 0.7);
-        }
-        .door {
-          position: fixed;
-          top: 0;
-          width: 50%;
-          height: 100%;
-          background-color: #3a2a1a;
-          transition: transform 1.5s ease-in-out;
-          z-index: 100;
-        }
-        .door.left {
-          left: 0;
-          transform-origin: left;
-        }
-        .door.right {
-          right: 0;
-          transform-origin: right;
-        }
-        .door.left.open {
-          transform: perspective(1200px) rotateY(120deg);
-        }
-        .door.right.open {
-          transform: perspective(1200px) rotateY(-120deg);
         }
         .title {
           font-size: 3.5rem;
